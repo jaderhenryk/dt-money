@@ -31,6 +31,14 @@
       "description": "Pastel",
       "createdAt": "2022-10-11T10:42:37.966Z",
       "id": 4
+    },
+    {
+      "category": "Compra de Hardware",
+      "price": 7200,
+      "type": "outcome",
+      "description": "Compra de Notebook",
+      "createdAt": "2022-10-11T23:22:49.550Z",
+      "id": 5
     }
   ]
 }

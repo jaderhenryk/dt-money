@@ -1,6 +1,6 @@
-import { useContext } from "react";
-
 import { useForm } from "react-hook-form";
+
+import { useContextSelector } from "use-context-selector";
 
 import * as zod from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,7 @@ const searchFormSchema = zod.object({
 type searchFormInputs = zod.infer<typeof searchFormSchema>;
 
 export function SearchForm() {
-  const { loadTransactions } = useContext(TransactionsContext)
+  const loadTransactions = useContextSelector(TransactionsContext, context => context.loadTransactions);
 
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<searchFormInputs>({
     resolver: zodResolver(searchFormSchema)
