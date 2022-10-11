@@ -4,7 +4,8 @@ import { Transaction } from "../models/transaction.interface";
 
 interface TransactionsContextType {
   transactions: Transaction[],
-  loadTransactions: (query?: string) => Promise<void>
+  loadTransactions: (query?: string) => Promise<void>,
+  createTransaction: (data: Transaction) => Promise<void>
 }
 
 interface TransactionsPropsProvider {
@@ -19,6 +20,8 @@ export function TransactionsProvider({ children }: TransactionsPropsProvider) {
   async function loadTransactions(query?: string) {
     const response = await api.get('/transactions', {
       params: {
+        _sort: 'createdAt',
+        _order: 'desc',
         q: query
       }
     })
@@ -26,12 +29,24 @@ export function TransactionsProvider({ children }: TransactionsPropsProvider) {
     setTransactions(response.data);
   }
 
+  async function createTransaction(data: Transaction) {
+    const { description, price, category, type } = data;
+    const response = await api.post('/transactions', {
+      category,
+      price,
+      type,
+      description,
+      createdAt: new Date()
+    });
+    setTransactions(state => [response.data, ...state]);
+  }
+
   useEffect(() => {
     loadTransactions();
   }, [])
   
   return (
-    <TransactionsContext.Provider value={{ transactions, loadTransactions }}>
+    <TransactionsContext.Provider value={{ transactions, loadTransactions, createTransaction }}>
       {children}
     </TransactionsContext.Provider>
   )

@@ -5,7 +5,7 @@
       "description": "Desenvolvimento de site",
       "type": "income",
       "category": "Venda",
-      "price": 17400.00,
+      "price": 17400,
       "createdAt": "2022-10-07T19:08:10.050Z"
     },
     {
@@ -13,8 +13,24 @@
       "description": "Hamburguer",
       "type": "outcome",
       "category": "Alimentação",
-      "price": 59.90,
+      "price": 59.9,
       "createdAt": "2022-10-07T14:08:10.050Z"
+    },
+    {
+      "category": "Venda",
+      "price": 5500,
+      "type": "income",
+      "description": "Venda de Computadores velhos",
+      "createdAt": "2022-10-11T10:28:59.749Z",
+      "id": 3
+    },
+    {
+      "category": "Alimentação",
+      "price": 4,
+      "type": "outcome",
+      "description": "Pastel",
+      "createdAt": "2022-10-11T10:42:37.966Z",
+      "id": 4
     }
   ]
 }
